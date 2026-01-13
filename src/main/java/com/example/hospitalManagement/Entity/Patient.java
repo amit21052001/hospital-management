@@ -28,8 +28,6 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
-    @ToString.Exclude
     private LocalDate birthDate;
     private String email;
     private String gender;
