@@ -2,6 +2,7 @@ package com.example.hospitalManagement.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.boot.web.servlet.ServletRegistration;
 
 import java.time.LocalDate;
@@ -27,10 +28,19 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "FIRST_NAME", nullable = false, length = 40)
     private String name;
 
     @ToString.Exclude
     private LocalDate birthDate;
+
+    @Column(nullable = false)
     private String email;
+
     private String gender;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDate createdAt;
 }
