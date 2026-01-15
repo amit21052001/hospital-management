@@ -35,7 +35,15 @@ public class PatientTest {
 
     @Test
     public void testTransactionalMethods() {
-        Patient p1 = patientService.getPatientById(1L);
-        System.out.println(p1);
+//        Patient p1 = patientService.getPatientById(1L);
+//        System.out.println(p1);
+
+//        Patient patient = patientRepo.findByName("Anang");
+//        System.out.println(patient);
+        List<Patient> patients = patientRepo.findByEmailOrName("Gagan@gmail.com", "Amit");
+        for (Patient patient : patients) {
+            System.out.println(patient);
+        }
+
     }
 }
