@@ -1,5 +1,6 @@
 package com.example.hospitalManagement;
 
+import com.example.hospitalManagement.DTO.BloodGroupCountDTO;
 import com.example.hospitalManagement.Entity.Patient;
 import com.example.hospitalManagement.Repository.PatientRepo;
 import com.example.hospitalManagement.Service.PatientService;
@@ -40,10 +41,36 @@ public class PatientTest {
 
 //        Patient patient = patientRepo.findByName("Anang");
 //        System.out.println(patient);
-        List<Patient> patients = patientRepo.findByEmailOrName("Gagan@gmail.com", "Amit");
-        for (Patient patient : patients) {
-            System.out.println(patient);
+//        List<Patient> patients = patientRepo.findByEmailOrName("Gagan@gmail.com", "Amit");
+//        for (Patient patient : patients) {
+//            System.out.println(patient);
+//        }
+
+//        List<Patient> patients = patientRepo.findByBloodGroup(BloodGroupType.B_POSITIVE);
+//        for (Patient patient : patients) {
+//            System.out.println(patient);
+//        }
+
+//        List<Patient> patients = patientRepo.findByBornAfterDate(LocalDate.of(2001,1,1));
+//        for (Patient patient : patients) {
+//            System.out.println(patient);
+//        }
+
+//        List<Object[]> patients = patientRepo.countOfEachBloodGroupType();
+//        for (Object[] patient : patients) {
+//            System.out.println(patient[0] + ", " + patient[1]);
+//        }
+        //Using Projection
+        List<BloodGroupCountDTO> bloodGroupCountDTOS = patientRepo.countOfEachBloodGroupTypeUsingProjection();
+        for(BloodGroupCountDTO bgc : bloodGroupCountDTOS) {
+            System.out.println(bgc);
         }
+
+//        int result = patientRepo.updateNameWithId("TestAmit", 1L);
+//        if(result == 1) {
+//            System.out.println("Name is changed Successfully!!!!!");
+//        }
+
 
     }
 }
