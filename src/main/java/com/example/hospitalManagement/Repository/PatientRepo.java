@@ -15,6 +15,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+import java.util.List;
+
 public interface PatientRepo extends JpaRepository<Patient, Long> {
     Patient findByName(String name);
     List<Patient> findByEmailOrName(String email, String name);
