@@ -7,6 +7,9 @@ import com.example.hospitalManagement.Service.PatientService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -61,16 +64,21 @@ public class PatientTest {
 //            System.out.println(patient[0] + ", " + patient[1]);
 //        }
         //Using Projection
-        List<BloodGroupCountDTO> bloodGroupCountDTOS = patientRepo.countOfEachBloodGroupTypeUsingProjection();
-        for(BloodGroupCountDTO bgc : bloodGroupCountDTOS) {
-            System.out.println(bgc);
-        }
+//        List<BloodGroupCountDTO> bloodGroupCountDTOS = patientRepo.countOfEachBloodGroupTypeUsingProjection();
+//        for(BloodGroupCountDTO bgc : bloodGroupCountDTOS) {
+//            System.out.println(bgc);
+//        }
 
 //        int result = patientRepo.updateNameWithId("TestAmit", 1L);
 //        if(result == 1) {
 //            System.out.println("Name is changed Successfully!!!!!");
 //        }
 
+        //Using Page. It allows us to sort the data too
+        Page<Patient> patientPage = patientRepo.findAllPatients(PageRequest.of(0,3));
+        for (Patient patient : patientPage) {
+            System.out.println(patient);
+        }
 
     }
 }
