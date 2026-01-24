@@ -78,7 +78,17 @@ public class PatientTest {
         Page<Patient> patientPage = patientRepo.findAllPatients(PageRequest.of(0,3));
         for (Patient patient : patientPage) {
             System.out.println(patient);
+        List<BloodGroupCountDTO> bloodGroupCountDTOS = patientRepo.countOfEachBloodGroupTypeUsingProjection();
+        for(BloodGroupCountDTO bgc : bloodGroupCountDTOS) {
+            System.out.println(bgc);
+
         }
+
+//        int result = patientRepo.updateNameWithId("TestAmit", 1L);
+//        if(result == 1) {
+//            System.out.println("Name is changed Successfully!!!!!");
+//        }
+
 
     }
 }
