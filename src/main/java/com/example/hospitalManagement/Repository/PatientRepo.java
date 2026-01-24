@@ -4,6 +4,8 @@ import com.example.hospitalManagement.DTO.BloodGroupCountDTO;
 import com.example.hospitalManagement.Entity.Patient;
 import com.example.hospitalManagement.Enum.BloodGroupType;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -32,7 +34,9 @@ public interface PatientRepo extends JpaRepository<Patient, Long> {
     List<BloodGroupCountDTO> countOfEachBloodGroupTypeUsingProjection();
 
     @Query(value = "select * from Patient", nativeQuery = true)
-    List<Patient> findAllPatients();
+
+    Page<Patient> findAllPatients(Pageable pageable);
+//    List<Patient> findAllPatients();
 
     @Transactional
     @Modifying
